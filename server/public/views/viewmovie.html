@@ -1,1 +1,8 @@
 <h1>look at movies</h1>
+<md-content>
+    <md-card ng-repeat="movie in vm.movies">
+        <md-card-header >
+            {{movie.title}}
+        </md-card-header>
+    </md-card>
+</md-content>
