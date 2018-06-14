@@ -19,7 +19,7 @@ router.delete('/:id', function (req, res) {
     pool.query(`
     DELETE FROM "movies" 
     WHERE "id" = $1;`, [movieId])
-        .then((res) => res.sendStatus(200))
+        .then((result) => {res.sendStatus(200)})
         .catch((err) => {
             console.log('error deleting', err);
             res.sendStatus(500);

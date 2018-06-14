@@ -16,4 +16,19 @@ app.service('ViewService', function($http){
             
         });
     }
+
+    self.deleteMovies = function(movie) {
+        console.log('id to delete in service', movie.id );
+        
+        return $http({
+            method: 'DELETE',
+            url: `/movie/${movie.id}`
+        }).then (function(response) {
+            console.log('Deleted movie', response);
+            
+        }).catch(function(error) {
+            console.log('error deleting', error);
+            
+        })
+    }
 })

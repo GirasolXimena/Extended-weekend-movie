@@ -1,8 +1,9 @@
-<h1>look at movies</h1>
+<h1 ng-init="vm.getAllMovies()">look at movies</h1>
 <md-content>
     <md-card ng-repeat="movie in vm.movies">
         <md-card-header >
             {{movie.title}}
         </md-card-header>
+        <button ng-click="vm.deleteMovie(movie)">delete</button>
     </md-card>
 </md-content>
