@@ -1,1 +1,26 @@
-<h1>SUP NERDS</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Robert's Movie Database</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="vendors/angular/angular.js"></script>
+    <script src="vendors/angular-route/angular-route.js"></script>
+    <script src="scripts/client.js"></script>
+
+    <script src="scripts/controllers/add.controller.js"></script>
+    <script src="scripts/controllers/movie.controller.js"></script>
+    <script src="scripts/controllers/home.controller.js"></script>
+
+    <script src="scripts/services/add.service.js"></script>
+    <script src="scripts/services/view.service.js"></script>
+</head>
+<body ng-app="MovieApp">
+    <h1>Welcome </h1>
+    <a href="#!">HOME</a>
+    <a href="#!movie">VIEW COLLECTION</a>
+    <a href="#!add">ADD MOVIE TO COLLECTION</a>
+    <ng-view></ng-view>
+</body>
+</html>
