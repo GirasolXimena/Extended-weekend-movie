@@ -24,6 +24,23 @@ router.delete('/:id', function (req, res) {
             console.log('error deleting', err);
             res.sendStatus(500);
         })
-})
+});
+
+router.post('/', function (req, res) {
+    console.log('in movie POST');
+    console.log(req.body);
+    const newMovie = req.body; 
+
+    const queryText = 
+    `INSERT INTO movies ("title", "mtype", "ryear") 
+    VALUES ($1, $2, $3)`;
+    pool.query(queryText, [newMovie.title, newMovie.mtype, newMovie.ryear])
+        .then((result) => {
+            res.sendStatus(201);
+        }).catch((err) => {
+            console.log('error', err);
+          
+        })
+});
 
 module.exports = router;

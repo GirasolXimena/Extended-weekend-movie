@@ -11,7 +11,7 @@ app.config(function($routeProvider) {
         controller: 'MovieController as vm'
     }).when( '/add', {
         templateUrl: '/views/addmovie.html',
-        controller: 'AddController as vm'
+        controller: 'GenreController as vm'
     }).otherwise({
         templateUrl: `<h1> 404 Page Not Found. Are you somewhere you shouldn't be?`
     })

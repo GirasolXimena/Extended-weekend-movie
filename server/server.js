@@ -5,13 +5,13 @@ const port = process.env.PORT || 5000;
 
 
 //routes go here
-// const add = require('./routes/add.route');
+const genre = require('./routes/genre.route');
 const movie = require('./routes/movie.route')
 
 
 app.use(express.static('server/public'));
 app.use(bodyParser.json());
-// app.use('/add', add);
+app.use('/genre', genre);
 app.use('/movie', movie);
 
 
