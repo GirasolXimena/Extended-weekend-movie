@@ -4,7 +4,10 @@ const pool = require('../modules/pool');
 
 router.get('/', function (req, res) {
     console.log('GETting All Movies');
-    const queryText = `SELECT * FROM movies;`;
+    const queryText = `
+    SELECT title, ryear, genre FROM movies
+    JOIN movie_genre ON movies.id = movie_genre.movie_id
+    JOIN genres ON genres.id = movie_genre.genre_id;`;
     pool.query(queryText)
         .then((result) => res.send(result.rows))
         .catch((err) => {

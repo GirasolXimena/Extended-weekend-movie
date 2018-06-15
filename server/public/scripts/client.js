@@ -1,5 +1,5 @@
 console.log('js');
-const app = angular.module('MovieApp', ['ngRoute']);
+const app = angular.module('MovieApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria']);
 
 app.config(function($routeProvider) {
 
