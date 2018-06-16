@@ -3,7 +3,7 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
     console.log('genre controller');
     self.allMovies = [];
     self.genreList = [];
-    newGenre = {};
+    self.editableGenreNames = [];
 
     self.addMovie = function (newMovie) {
         console.log('adding movie', self.newMovie);
@@ -19,6 +19,12 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
     self.getGenres = function () {
         GenreService.getGenres().then(function () {
             self.genreList = GenreService.allGenres;
+            for (let i=0; i<self.genreList.length; i++) {
+                genreId = self.genreList[i].id;
+                genreName = self.genreList[i].genre;
+                self.editableGenreNames.push({genreId, genreName});
+            }
+            
             console.log('got genres', self.genreList);
 
         });
@@ -35,9 +41,9 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
 
     }
 
-    self.deleteGenre = function (genreToDelete) {
-        console.log('deleting genre', self.genreToDelete.genre);
-        genreToDelete = self.genreToDelete
+    self.deleteGenre = function ($chip) {
+        console.log('deleting genre', $chip);
+        genreToDelete = $chip;
         console.log('genre to delete pt2', genreToDelete);
 
         GenreService.deleteGenre(genreToDelete).then(function () {
@@ -67,6 +73,10 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
         })
     }
     self.showGenreDialog = function (ev) {
+        console.log(self.editableGenreNames);
+        editableGenreNames = self.editableGenreNames;
+        console.log(editableGenreNames);
+        
         $mdDialog.show({
             templateUrl: 'views/addgenre.html',
             controller: 'GenreController as vm',
@@ -75,6 +85,7 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
             clickOutsideToCLose: true,
             // fullscreen: self.customFullscreen
         })
-    }
+    };
+
     self.getGenres();
 })

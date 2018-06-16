@@ -3,7 +3,7 @@
         <md-dialog-content>
             <md-toolbar>
                 <div class="md-toolbar-tools">
-                    <h2>Add or remove genres</h2>
+                    <h2>Edit genres</h2>
                     <span flex></span>
                 </div>
             </md-toolbar>
@@ -15,9 +15,23 @@
                 <md-input-container>
                     <span>
                         <md-button class="md-raised md-warn" ng-click="vm.cancelAddDialog($event)">Cancel</md-button>
-                        <md-button class="md-raised md-primary" ng-click="vm.addGenre()">Add Genre</md-button>
+                        <md-button class="md-raised md-primary" ng-click="vm.addGenre(newGenre)">Add Genre</md-button>
                     </span>
                 </md-input-container>
+                <md-divider></md-divider>
+                <md-content class="md-padding" layout="column">
+                        <h2 class="md-title">Edit or remove genres</h2>
+                        <md-chips class = "custom-chips" ng-model="vm.genreList" md-removable="ctrl.removable"
+                        md-enable-chip-edit="true" md-on-remove="vm.deleteGenre($chip)">
+                        <md-chip-template>
+                              <span>
+                                  {{$chip.genre}}
+                              </span>  
+                        </md-chip-template>
+                        
+                    
+                    </md-chips>
+                
             </md-content>
         </md-dialog-content>
     </form>

@@ -54,11 +54,11 @@ app.service('GenreService', function($http){
 
     self.deleteGenre = function (genreToDelete) {
         console.log('delete genre service', genreToDelete);
-        console.log('final one', genreToDelete.genre);
+        console.log('final one', genreToDelete.id);
         
         return $http({
             method: 'DELETE',
-            url: `/genre/${genreToDelete.genre}`
+            url: `/genre/${genreToDelete.id}`
         }).then (function(response) {
             console.log('Deleted genre', response);
             
