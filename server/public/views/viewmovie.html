@@ -1,9 +1,22 @@
 <h1 ng-init="vm.getAllMovies()">look at movies</h1>
-<md-content>
-    <md-card ng-repeat="movie in vm.movies">
-        <md-card-header >
-            {{movie.title}}
-        </md-card-header>
-        <button ng-click="vm.deleteMovie(movie)">delete</button>
-    </md-card>
+<md-content class="md-padding" layout-xs="column" layout="row" flex="3">
+    <span flex-xs flex-gt-xs="50" layout="row">
+        <md-card flex="3" ng-repeat="movie in vm.movies">
+            <md-card-title>
+                <md-card-header>
+                    <md-card-header-text>
+                        <span class="md-headline">{{movie.title}}</span>
+                        <span class="md-subhead">{{movie.ryear}}</span>
+                    </md-card-header-text>
+                </md-card-header>
+            </md-card-title>
+                <md-card-media>
+                    <div class="md-media-lg card-media">
+                        <img height="300" width="200" src="https://lumiere-a.akamaihd.net/v1/images/sb_payoff_1-sht_v6_lg_tm_lg_e528c9e9.jpeg?region=0%2C0%2C810%2C1200" alt="">
+                    </div>
+                </md-card-media>
+            <br>
+            <md-button class="md-raised md-warn" ng-click="vm.deleteMovie(movie)">delete</md-button>
+        </md-card>
+    </span>
 </md-content>

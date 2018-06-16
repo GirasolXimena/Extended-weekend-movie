@@ -29,7 +29,14 @@ app.service('GenreService', function($http){
             
         })
     };
-
+    self.putGenre = function (genreInfo) {
+        console.log(genreInfo);
+        return $http({
+        method: 'POST',
+        url: '/genre/putgenre',
+        data: genreInfo
+        })
+    }
     self.postGenre = function (newGenre) {
         console.log('logging genre to send', newGenre);
         return $http({

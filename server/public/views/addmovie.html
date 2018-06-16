@@ -1,38 +1,16 @@
 <h1>ADD NEW MOVIE TO COLLECTION</h1>
 
-<form>
-    <input type="text" placeholder="Title:" ng-model="vm.newMovie.title">
-    <input type="number" min="1900" max="2050" step="1" value="2018" 
-    placeholder="Year" ng-model="vm.newMovie.ryear">
-    <select name="" id="">
-        <option selected disabled>Choose Genre</option>
-        <option ng-repeat="genre in vm.genreList" value="{{genre.genre}}">{{genre.genre}}</option>
-    </select>
-    <select ng-model="vm.newMovie.mtype">
-            <option selected disabled>Type</option>
-        <option value="movie">Movie</option>
-        <option value="series">Series</option>
-        <option value="episode">Episode</option>
-    </select>
-    <button ng-click="vm.addMovie()">Add Movie</button>
-</form>
+<md-content>
+    <md-input-container>
+        <a href="#!addview">
+            <md-button ng-click="vm.showAddDialog($event)" class="md-raised md-primary">Add Movie</md-button>
+        </a>
+    </md-input-container>
+</md-content>
 
 
-<h1>Add A New Genre:</h1>
-<h2>Genre will appear in list after you add it.</h2>
-<form>
-<input type="text" placeholder="New Genre" ng-model="vm.newGenre.genre">
-<button ng-click="vm.addGenre()">Add Genre</button>
-</form>
+<h1>Add or Delete Genres:</h1>
+<md-button ng-click="vm.showGenreDialog($event)" class="md-raised md-primary">Genre Edit</md-button>
+<h3>Genre will appear in list after you add it.</h3>
 
 
-<h3>Delete A Genre:</h3>
-<h5>WARNING: Genre cannot be un-deleted</h5>
-<form>
-    <select ng-model="vm.genreToDelete.genre">
-        <option selected disabled>Choose Genre</option>
-        <option ng-repeat="genre in vm.genreList" value="{{genre.id}}">{{genre.genre}}</option>
-    </select>
-    <button ng-click="vm.deleteGenre()">Delete Genre</button>
-</form>
-    

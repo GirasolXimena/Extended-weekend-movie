@@ -1,0 +1,24 @@
+<md-dialog aria-label="Add a new genre">
+    <form ng-cloak>
+        <md-dialog-content>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Add or remove genres</h2>
+                    <span flex></span>
+                </div>
+            </md-toolbar>
+            <md-content>
+                <md-input-container>
+                    <label>New Genre</label>
+                    <input type="text" ng-model="vm.newGenre.genre">
+                </md-input-container>
+                <md-input-container>
+                    <span>
+                        <md-button class="md-raised md-warn" ng-click="vm.cancelAddDialog($event)">Cancel</md-button>
+                        <md-button class="md-raised md-primary" ng-click="vm.addGenre()">Add Genre</md-button>
+                    </span>
+                </md-input-container>
+            </md-content>
+        </md-dialog-content>
+    </form>
+</md-dialog>

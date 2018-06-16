@@ -1,5 +1,11 @@
 console.log('js');
-const app = angular.module('MovieApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria']);
+const app = angular.module('MovieApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria'])
+.config(function($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+    .dark()
+    .primaryPalette('pink')
+    .accentPalette('orange');
+});
 
 app.config(function($routeProvider) {
 
@@ -12,7 +18,8 @@ app.config(function($routeProvider) {
     }).when( '/add', {
         templateUrl: '/views/addmovie.html',
         controller: 'GenreController as vm'
-    }).otherwise({
+    })
+    .otherwise({
         templateUrl: `<h1> 404 Page Not Found. Are you somewhere you shouldn't be?`
     })
 });
