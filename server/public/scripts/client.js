@@ -18,6 +18,9 @@ app.config(function($routeProvider) {
     }).when( '/add', {
         templateUrl: '/views/addmovie.html',
         controller: 'GenreController as vm'
+    }).when('/addview', {
+        templateUrl: '/views/addmovie.html',
+        controller: 'GenreController as vm'
     })
     .otherwise({
         templateUrl: `<h1> 404 Page Not Found. Are you somewhere you shouldn't be?`

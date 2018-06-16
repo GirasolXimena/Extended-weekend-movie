@@ -51,7 +51,7 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
             controller: 'GenreController as vm',
             parent: angular.element(document.body),
             targetEvent: ev,
-            clickOUtsideToCLose: true,
+            clickOutsideToCLose: true,
             // fullscreen: self.customFullscreen
         })
     }
@@ -70,9 +70,9 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
         $mdDialog.show({
             templateUrl: 'views/addgenre.html',
             controller: 'GenreController as vm',
-            parent: angular.element(document.body),
+            // parent: angular.element(document.body),
             targetEvent: ev,
-            clickOUtsideToCLose: true,
+            clickOutsideToCLose: true,
             // fullscreen: self.customFullscreen
         })
     }
