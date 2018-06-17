@@ -1,7 +1,8 @@
 app.service('ViewService', function($http){
     let self=this;
     self.allMovies = [];
-
+    self.allMoviesApi = [];
+    
     self.getMovies = function () {
         return $http({
             method: 'GET',
@@ -15,6 +16,31 @@ app.service('ViewService', function($http){
             console.log('GET error', error);
             
         });
+    }
+
+    self.getApiMovies = function (apiMovies) {
+        console.log(apiMovies);
+        
+        for (movie of apiMovies) {
+            console.log(movie.searchTitle);
+            console.log(movie.searchYear);
+           $http({
+               method: 'GET',
+               url: `http://www.omdbapi.com/?apikey=41208ca&t=${movie.searchTitle}&y=${movie.searchYear}`
+           }).then(function(response) {
+            console.log('Response for GET', response);
+            self.allMoviesApi.push(response.data);
+            console.log(response.data);
+            
+        }).catch(function(error) {
+            console.log('GET error', error);
+            
+        });
+            
+        }
+        console.log(self.allMoviesApi);
+        return self.allMoviesApi;
+        
     }
 
     self.deleteMovies = function(movie) {

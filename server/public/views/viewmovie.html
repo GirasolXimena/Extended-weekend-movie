@@ -1,18 +1,19 @@
 <h1 ng-init="vm.getAllMovies()">look at movies</h1>
 <md-content class="md-padding" layout-xs="column" layout="row" flex="3">
-    <span flex-xs flex-gt-xs="50" layout="row">
+    <span flex-xs flex-gt-xs="50" layout="row" layout="column">
         <md-card flex="3" ng-repeat="movie in vm.movies">
             <md-card-title>
                 <md-card-header>
                     <md-card-header-text>
-                        <span class="md-headline">{{movie.title}}</span>
-                        <span class="md-subhead">{{movie.ryear}}</span>
+                        <span class="md-headline">{{movie.Title}}</span>
+                        <span class="md-subhead">{{movie.Year}}</span>
+                        
                     </md-card-header-text>
                 </md-card-header>
             </md-card-title>
                 <md-card-media>
                     <div class="md-media-lg card-media">
-                        <img height="300" width="200" src="https://lumiere-a.akamaihd.net/v1/images/sb_payoff_1-sht_v6_lg_tm_lg_e528c9e9.jpeg?region=0%2C0%2C810%2C1200" alt="">
+                        <img height="300" width="200" ng-src="{{movie.Poster}}" alt="">
                     </div>
                 </md-card-media>
             <br>
