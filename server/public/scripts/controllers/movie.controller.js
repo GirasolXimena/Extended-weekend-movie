@@ -1,31 +1,25 @@
-app.controller('MovieController', function (ViewService, GenreService) {
+app.controller('MovieController', function (ViewService, $mdDialog ) {
     let self = this;
     console.log('Movie controller');
     self.movies = [];
     self.genreList = [];
-    self.movieData = [];
     apiMovies = [];
+   
     self.getAllMovies = function () {
-        ViewService.getMovies().then(function () {
-            self.movies = ViewService.allMovies;
-            console.log('got movies', self.movies);
-            movies = self.movies;
-            console.log('movies array', movies);
-            movies.forEach(movie => {
-                apiMovies.push({
-                    searchTitle: movie.title.split(" ").join("+"),
-                    searchYear: movie.ryear,
-                    searchType: movie.mtype
-                });
+        ViewService.getMovies();
+        self.movies = ViewService.allMoviesApi;
+    }
 
-            })
-
-
-        }).then(function () {
-            self.movies = ViewService.getApiMovies(apiMovies);
-                console.log('movie with api data', self.movies);               
-            })
+    self.soloMovie = function () {
+        console.log(expMovie);
+        self.expMovie = expMovie;
+        
     };
+
+    self.closeMovie = function() {
+        $mdDialog.cancel({
+        });
+    }
 
     self.deleteMovie = function (movie) {
         console.log('delete');
@@ -35,4 +29,19 @@ app.controller('MovieController', function (ViewService, GenreService) {
         });
 
     };
+
+    self.expandMovie = function(movie) {
+        expMovie = movie;
+        $mdDialog.show({
+            templateUrl: 'views/expandedmovie.html',
+            controller: 'MovieController as vm',
+            parent: angular.element(document.body),
+            targetEvent: movie,
+            clickOutsideToCLose: true,
+
+        });
+            console.log(expMovie);
+            return expMovie    
+    }
+    
 });

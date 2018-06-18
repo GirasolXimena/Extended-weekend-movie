@@ -5,6 +5,7 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
     self.genreList = [];
     self.editableGenreNames = [];
 
+    
     self.addMovie = function (newMovie) {
         console.log('adding movie', self.newMovie);
         GenreService.postMovie(self.newMovie);
@@ -13,6 +14,14 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
             genre = self.newMovie.genre;
             genreInfo = {allMovies, genre};
             GenreService.putGenre(genreInfo);
+            $mdDialog.cancel({
+                // templateUrl: 'views/addview.html',
+                // controller: 'GenreController as vm',
+                // parent: angular.element(document.body),
+                // targetEvent: ev,
+                // clickOUtsideToCLose: true,
+                // fullscreen: self.customFullscreen
+            });
         })
     }
 
@@ -36,19 +45,32 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
             function () {
                 self.getGenres();
                 self.cancelAddDialog();
-
+                $mdDialog.cancel({
+                    // templateUrl: 'views/addview.html',
+                    // controller: 'GenreController as vm',
+                    // parent: angular.element(document.body),
+                    // targetEvent: ev,
+                    // clickOUtsideToCLose: true,
+                    // fullscreen: self.customFullscreen
+                });
             })
 
     }
 
     self.deleteGenre = function ($chip) {
-        console.log('deleting genre', $chip);
-        genreToDelete = $chip;
-        console.log('genre to delete pt2', genreToDelete);
 
+        genreToDelete = $chip;
+
+        let delConfirm = confirm('Genre Delete cannot be undone!')
+        if (delConfirm === true ) {
         GenreService.deleteGenre(genreToDelete).then(function () {
             self.getGenres();
-        });
+        
+        })}
+        else if (delConfirm === false) {
+            console.log('cancelled deleting');
+            
+        };
     }
 
     self.showAddDialog = function (ev) {
@@ -58,24 +80,19 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
             parent: angular.element(document.body),
             targetEvent: ev,
             clickOutsideToCLose: true,
-            // fullscreen: self.customFullscreen
+
         })
     }
 
     self.cancelAddDialog = function (ev) {
         $mdDialog.cancel({
-            // templateUrl: 'views/addview.html',
-            // controller: 'GenreController as vm',
-            // parent: angular.element(document.body),
-            // targetEvent: ev,
-            // clickOUtsideToCLose: true,
-            // fullscreen: self.customFullscreen
+
         })
     }
     self.showGenreDialog = function (ev) {
-        console.log(self.editableGenreNames);
+
         editableGenreNames = self.editableGenreNames;
-        console.log(editableGenreNames);
+ 
         
         $mdDialog.show({
             templateUrl: 'views/addgenre.html',

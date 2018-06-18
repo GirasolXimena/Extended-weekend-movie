@@ -16,7 +16,6 @@ app.service('GenreService', function($http){
             });
         };
     self.postMovie = function (newMovie) {
-        console.log('logging Movietosend', newMovie);
         return $http({
             method: 'POST',
             url: '/movie',
@@ -30,7 +29,6 @@ app.service('GenreService', function($http){
         })
     };
     self.putGenre = function (genreInfo) {
-        console.log(genreInfo);
         return $http({
         method: 'POST',
         url: '/genre/putgenre',
@@ -38,7 +36,6 @@ app.service('GenreService', function($http){
         })
     }
     self.postGenre = function (newGenre) {
-        console.log('logging genre to send', newGenre);
         return $http({
             method: 'POST',
             url: '/genre',
@@ -53,9 +50,7 @@ app.service('GenreService', function($http){
     };
 
     self.deleteGenre = function (genreToDelete) {
-        console.log('delete genre service', genreToDelete);
-        console.log('final one', genreToDelete.id);
-        
+
         return $http({
             method: 'DELETE',
             url: `/genre/${genreToDelete.id}`

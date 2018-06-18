@@ -3,13 +3,13 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 router.get('/', function (req, res) {
-    console.log('GETting All Movies');
+   
     const queryText = `
     SELECT * FROM movies`;
     pool.query(queryText)
         .then((result) => res.send(result.rows))
         .catch((err) => {
-            console.log('error getting movies', err)
+   
             res.sendStatus(500)
         });
 });
@@ -22,7 +22,7 @@ router.delete('/:id', function (req, res) {
     WHERE "id" = $1;`, [movieId])
         .then((result) => {res.sendStatus(200)})
         .catch((err) => {
-            console.log('error deleting', err);
+         
             res.sendStatus(500);
         })
 });
@@ -39,8 +39,7 @@ router.post('/', function (req, res) {
         .then((result) => {
             res.send(result);
         }).catch((err) => {
-            console.log('error', err);
-          
+            console.log('error', err);  
         })
 });
 

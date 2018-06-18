@@ -1,5 +1,7 @@
 app.controller('HomeController', function(ViewService){
     let self = this;
-    console.log('Home controller');
-    
+    self.getAllMovies = function () {
+        ViewService.getMovies();
+        self.movies = ViewService.allMoviesApi;
+    }
 })

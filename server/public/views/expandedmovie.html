@@ -1,0 +1,15 @@
+<body>
+    <h1 ng-init = "vm.soloMovie()"> {{vm.expMovie.Title}} </h1>
+    <h3>Starring: </h3> 
+    <p>{{vm.expMovie.Actors}}</p>
+    <h3>Rated: {{vm.expMovie.Rated}}</h3>
+    <img height="600" width="300"  ng-src="{{vm.expMovie.Poster}}">
+
+    <p>Plot: {{vm.expMovie.Plot}}</p>
+
+    <footer>
+        <h4>{{vm.expMovie.Ratings[1].Source}} Rating:</h4>
+        <p>{{vm.expMovie.Ratings[1].Value}}</p>
+    </footer>
+    <md-button class="md-raised md-primary" ng-click="vm.closeMovie()">Close</md-button>
+</body>

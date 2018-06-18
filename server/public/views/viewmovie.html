@@ -1,6 +1,6 @@
-<h1 ng-init="vm.getAllMovies()">look at movies</h1>
-<md-content class="md-padding" layout-xs="column" layout="row" flex="3">
-    <span flex-xs flex-gt-xs="50" layout="row" layout="column">
+<h1>look at movies</h1>
+<md-content ng-init="vm.getAllMovies()" class="md-padding" layout-xs="column" layout="row" flex="3">
+    <span ng-click="expandMovie($index)" flex-xs flex-gt-xs="50" layout="row" layout="column">
         <md-card flex="3" ng-repeat="movie in vm.movies">
             <md-card-title>
                 <md-card-header>
@@ -11,13 +11,14 @@
                     </md-card-header-text>
                 </md-card-header>
             </md-card-title>
-                <md-card-media>
+                <md-card-media >
                     <div class="md-media-lg card-media">
                         <img height="300" width="200" ng-src="{{movie.Poster}}" alt="">
                     </div>
                 </md-card-media>
             <br>
             <md-button class="md-raised md-warn" ng-click="vm.deleteMovie(movie)">delete</md-button>
+            <md-button class="md-raised md-primary" ng-click="vm.expandMovie(movie)">More Info</md-button>
         </md-card>
     </span>
 </md-content>
