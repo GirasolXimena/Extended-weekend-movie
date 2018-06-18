@@ -8,7 +8,9 @@ app.controller('MovieController', function (ViewService, $mdDialog ) {
     self.getAllMovies = function () {
         ViewService.getMovies();
         self.movies = ViewService.allMoviesApi;
-    }
+        self.moviedId = ViewService.allMoviesApiId;
+        console.log(self.moviedId);
+    };
 
     self.soloMovie = function () {
         console.log(expMovie);
@@ -21,12 +23,12 @@ app.controller('MovieController', function (ViewService, $mdDialog ) {
         });
     }
 
-    self.deleteMovie = function (movie) {
+    self.deleteMovie = function (id) {
         console.log('delete');
-        console.log(movie);
-        ViewService.deleteMovies(movie).then(function () {
-            self.getAllMovies();
-        });
+        console.log(id);
+        // ViewService.deleteMovies(movie).then(function () {
+        //     self.getAllMovies();
+        // });
 
     };
 

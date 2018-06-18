@@ -1,5 +1,5 @@
 <h1>look at movies</h1>
-<md-content ng-init="vm.getAllMovies()" class="md-padding" layout-xs="column" layout="row" flex="3">
+<md-content ng-init="vm.getAllMovies()" class="md-padding" layout-xs="column" layout="row" flex="3" flex-wrap>
     <span ng-click="expandMovie($index)" flex-xs flex-gt-xs="50" layout="row" layout="column">
         <md-card flex="3" ng-repeat="movie in vm.movies">
             <md-card-title>
