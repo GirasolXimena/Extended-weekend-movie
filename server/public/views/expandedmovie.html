@@ -1,9 +1,10 @@
 <body>
-    <h1 ng-init = "vm.soloMovie()"> {{vm.expMovie.api.Title}} </h1>
-    <h3>Starring: </h3> 
-    <p>{{vm.expMovie.api.Actors}}</p>
-    <h3>Rated: {{vm.expMovie.api.Rated}}</h3>
-    <img height="600" width="300" style="float: right;" ng-src="{{vm.expMovie.api.Poster}}">
+    <h1 ng-init = "vm.soloMovie()" style="display: block; margin-left: auto; margin-right: auto;"> {{vm.expMovie.api.Title}} </h1>
+     <p style="color: darkgray">{{vm.expMovie.api.Released}}</p>
+
+   <span> <p style="font-style: italic; display: inline;"> Starring:</p> <p style="display: inline;">{{vm.expMovie.api.Actors}}</p> </span>
+    <h3>Rated: <span style="font-style: italic; display: inline;">  {{vm.expMovie.api.Rated}}</span></h3>
+    <img height="750" width="300" style="display: block; margin-left: auto; margin-right: auto;" ng-src="{{vm.expMovie.api.Poster}}">
 
     <p style="float: left;" >Plot: {{vm.expMovie.api.Plot}}</p>
 

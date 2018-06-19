@@ -30,24 +30,24 @@ router.post('/', function (req, res) {
 
         })
 });
-// router.post('/putgenre', function(req,res) {
-//     console.log('adding Genre to Movie');
-//     console.log(req.body);
-//     movieArray = (req.body.allMovies);
-//     genreToEdit = (req.body.genre);
-//     movieToEdit = movieArray[movieArray.length-1].id;
-//     console.log('adding genre info', movieToEdit, genreToEdit);
-//     const queryText = 
-//         `INSERT INTO movie_genre ("movie_id", "genre_id")
-//          VALUES ($1, $2)`;
-//     pool.query(queryText, [(parseInt(movieToEdit) + 1), parseInt(genreToEdit)])
-//     .then((result) => {
-//         res.sendStatus(201);
-//     }).catch((err) => {
-//         console.log('error', err);
+router.post('/putgenre', function(req,res) {
+    console.log('adding Genre to Movie');
+    console.log(req.body);
+    movieArray = (req.body.allMovies);
+    genreToEdit = (req.body.genre);
+    movieToEdit = movieArray[movieArray.length-1].id;
+    console.log('adding genre info', movieToEdit, genreToEdit);
+    const queryText = 
+        `INSERT INTO movie_genre ("movie_id", "genre_id")
+         VALUES ($1, $2)`;
+    pool.query(queryText, [(parseInt(movieToEdit) + 1), parseInt(genreToEdit)])
+    .then((result) => {
+        res.sendStatus(201);
+    }).catch((err) => {
+        console.log('error', err);
 
-//     });
-// })
+    });
+})
 router.delete('/:id', function (req, res) {
     console.log('DELETE genre', req.params.id);
     genreId = req.params.id;

@@ -3,7 +3,7 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
     console.log('genre controller');
     self.allMovies = [];
     self.genreList = [];
-
+    self.editableGenreNames = [];
     
     self.addMovie = function (newMovie) {
         console.log('adding movie', self.newMovie);

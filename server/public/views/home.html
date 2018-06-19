@@ -3,9 +3,9 @@
 <md-grid-list  md-cols-sm="2" md-cols-md="4" md-cols-lg="8" md-cols-gt-lg="12" md-row-height="400px" style="height: 400px;" ng-init="vm.getAllMovies()" >
     
             <md-grid-tile ng-repeat="movie in vm.movies">
-                  
+                    
                         <div>
-                            <img height="300" width="200" ng-src="{{movie.Poster}}" alt="">
+                            <img height="300" width="200" ng-src="{{movie.api.Poster}}" alt="{{movie.api.Title}}">
                         </div>
             
             </md-grid-tile>

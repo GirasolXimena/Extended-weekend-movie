@@ -10,6 +10,7 @@ app.service('ViewService', function ($http) {
                 url: '/movie'
             }).then(function (response) {
                 console.log('Response for GET movies', response);
+                self.allMovies = [];
                 self.movieArray = response.data;
                 for (movie of self.movieArray) {
                     apiData = JSON.parse(movie.apidata);
