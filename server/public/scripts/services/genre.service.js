@@ -15,11 +15,12 @@ app.service('GenreService', function($http){
                 
             });
         };
-    self.postMovie = function (newMovie) {
+    self.postMovie = function (movieToSend) {
+        
         return $http({
             method: 'POST',
             url: '/movie',
-            data: newMovie
+            data: movieToSend
         }).then(function(response) {
             console.log('Response for POST', response);
             self.allMovies = response.data;

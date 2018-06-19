@@ -1,14 +1,22 @@
-app.controller('GenreController', function (GenreService, $mdDialog, ViewService) {
+app.controller('GenreController', function (GenreService, $mdDialog, ViewService, $http) {
     let self = this;
     console.log('genre controller');
     self.allMovies = [];
     self.genreList = [];
-    self.editableGenreNames = [];
 
     
     self.addMovie = function (newMovie) {
         console.log('adding movie', self.newMovie);
-        GenreService.postMovie(self.newMovie);
+              $http({
+                method: 'GET',
+                url: `http://www.omdbapi.com/?apikey=41208ca&t=${self.newMovie.title}&y=${self.newMovie.ryear}&plot=full`
+            }).then(function(response) {
+                movieToSend =  {
+                    server : self.newMovie, 
+                    api: response.data
+                };    
+                GenreService.postMovie(movieToSend)
+            });
         ViewService.getMovies().then(function(){
             allMovies = ViewService.allMovies;
             genre = self.newMovie.genre;
@@ -46,12 +54,7 @@ app.controller('GenreController', function (GenreService, $mdDialog, ViewService
                 self.getGenres();
                 self.cancelAddDialog();
                 $mdDialog.cancel({
-                    // templateUrl: 'views/addview.html',
-                    // controller: 'GenreController as vm',
-                    // parent: angular.element(document.body),
-                    // targetEvent: ev,
-                    // clickOUtsideToCLose: true,
-                    // fullscreen: self.customFullscreen
+                    
                 });
             })
 

@@ -9,33 +9,25 @@ app.service('ViewService', function ($http) {
                 method: 'GET',
                 url: '/movie'
             }).then(function (response) {
-                console.log('Response for GET', response);
-                self.allMovies = response.data;
-                self.getApi(self.allMovies);
+                console.log('Response for GET movies', response);
+                self.movieArray = response.data;
+                for (movie of self.movieArray) {
+                    apiData = JSON.parse(movie.apidata);
+                    movieId = movie.id;
+                    movieObject = {
+                        api: apiData,
+                        id: movieId
+                    }
+                    self.allMovies.push(movieObject);
+                }
+                console.log(self.allMovies);
+                
             })
             .catch(function (error) {
                 console.log('GET error', error);
             });
     };
 
-    self.getApi = function() {
-     
-        self.allMoviesApi =[];
-        for (movie of self.allMovies) {
-
-            console.log(movie.id);
-              $http({
-                method: 'GET',
-                url: `http://www.omdbapi.com/?apikey=41208ca&t=${movie.title}&y=${movie.ryear}&plot=full`
-                
-            }).then(function(response) {
-                
-                self.allMoviesApi.push(response.data);
-            })
-
-        }
-        console.log('apidata', self.allMoviesApi);
-    }
 
     self.deleteMovies = function (movie) {
 

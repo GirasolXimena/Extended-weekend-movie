@@ -29,13 +29,13 @@ router.delete('/:id', function (req, res) {
 
 router.post('/', function (req, res) {
     console.log('in movie POST');
-    console.log(req.body);
+    console.log(req.body.server.title, req.body.api.Title);
     const newMovie = req.body; 
 
     const queryText = 
-    `INSERT INTO movies ("title", "mtype", "ryear") 
-    VALUES ($1, $2, $3)`;
-    pool.query(queryText, [newMovie.title, newMovie.mtype, newMovie.ryear])
+    `INSERT INTO movies ("title", "mtype", "ryear", "apidata") 
+    VALUES ($1, $2, $3, $4);`;
+    pool.query(queryText, [newMovie.api.Title, newMovie.server.mtype, newMovie.server.ryear, newMovie.api])
         .then((result) => {
             res.send(result);
         }).catch((err) => {
@@ -43,4 +43,15 @@ router.post('/', function (req, res) {
         })
 });
 
+router.put('/', function (req,res) {
+    console.log('in movie PUT');
+    console.log(req.body);
+    const newApi = req.body
+    const queryText = 
+    `UPDATE "movies" 
+     SET "apidata" = $1 
+     WHERE "id" = $2`;
+     pool.query(queryText, [newApi.apiData, newApi.ApiId])
+    
+})
 module.exports = router;
